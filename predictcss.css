@@ -1,0 +1,44 @@
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+  }
+  
+  .image-container {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ccc;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+  }
+    
+  body, html {
+    height: 100%;
+  }
+  
+  .bg {
+  
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }  
