@@ -1,0 +1,56 @@
+<head>
+    <title>Result page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}">
+    <style>
+        .container {
+            max-width: 1000px;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            margin-right: 150px;
+            margin-left: 250px;
+            padding: 20px;
+            background-color: #0d2149;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+          }
+        
+        body {
+            background-image: url('static/image/predbg.jpg');
+            background-size: cover;
+        }
+        h1 {
+            color:#fff;
+            font-size: 36px;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        p {
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+        }
+        li{
+            color: #fff;
+            font-size: 24px;
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><b>Prediction Results:</b></h1>
+        <p><i>The detected objects are:</i></p>
+        {% if predictions %}
+        <ul>
+            {% for pred in predictions %}
+            <li>{{ pred }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No objects detected.</p>
+        {% endif %}
+    </div>
+</body>
+
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YOLOv5 Object Detection</title>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Water body pollutants Classification</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <script>
+            function previewImage(event) {
+                var preview = document.querySelector('#preview');
+                var file = event.target.files[0];
+                var reader = new FileReader();
+            
+                reader.addEventListener('load', function () {
+                    preview.src = reader.result;
+                }, false);
+            
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            }
+            
+        </script>
+        
+            
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#predict">Prediction</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('static/image/homebg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1 style="color:black;font-weight: bold;">Classification Of Pollutants</h1>
+                        <span class="subheading">A Model which detects and predicts the pollutants present in the water body and displays it!!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content-->
+    <div id="about">
+        <div >
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        
+                            <h1 style="font-size: medium;color:black;font-weight: bold;font-style:italic">Water bodies are essential resources for life on earth, supporting a wide range of aquatic ecosystems and providing a vital source of freshwater for human use. However, these bodies of water are vulnerable to pollution from a variety of sources, including industrial activities, agricultural runoff, and household waste. These pollutants can include heavy metals, plastics, pesticides, and other harmful chemicals.</h1>
+                            <h1 style="font-size: medium;color:black;font-weight: bold;font-style:italic">Metals such as mercury, lead, and cadmium are toxic to aquatic life and can accumulate in the food chain, posing a risk to human health. Plastics are another major pollutant of water bodies, causing harm to marine life through ingestion and entanglement.</h1>
+                            <h1 style="font-size: medium;color:black;font-weight: bold;font-style:italic" >Other pollutants, such as nutrients from agricultural runoff, can lead to the overgrowth of algae and other aquatic plants, causing harmful algal blooms that can be toxic to both aquatic life and humans.
+
+                                The exploitation of water bodies by these pollutants is a significant environmental and public health concern. It highlights the need for better management practices and regulations to minimize pollution and protect these vital resources for future generations.</h1>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Pager-->
+                </div>
+            </div>
+        </div>
+        <div id="predict">
+            <div >
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <!-- Post preview-->
+                        <div class="post-preview">
+                            
+                            <h1>YOLOv5 Object Detection</h1>
+                            <form method="POST" action="{{ url_for('detect') }}" enctype="multipart/form-data">
+                                <input type="file" name="file" onchange="previewImage(event)">
+                                <input type="submit" value="Detect">
+                            </form>
+                            <img id="preview" src="#" alt="Uploaded Image">
+                            {% if prediction %}
+                                <h2>Prediction:</h2>
+                                <ul>
+                                    {% for item in prediction %}
+                                        <li>{{ item }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}                   </div>
+                        <!-- Divider-->
+                        <hr class="my-4" />
+                        <!-- Pager-->
+                    </div>
+                </div>
+            </div>
+        
+       
+    </div>
+    
+    
+</body>
+</html>
